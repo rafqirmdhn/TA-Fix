@@ -1,0 +1,47 @@
+[System]
+Name='mamdani'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Speed'
+Range=[0 50]
+NumMFs=3
+MF1='Low':'trapmf',[0 0 10 20]
+MF2='Med':'trapmf',[10 20 30 40]
+MF3='High':'trapmf',[30 40 50 50]
+
+[Input2]
+Name='Angle'
+Range=[-2 2]
+NumMFs=3
+MF1='Left':'trapmf',[-2 -2 -1 -0.5]
+MF2='Straight':'trapmf',[-1 -0.5 0.5 1]
+MF3='Right':'trapmf',[0.5 1 2 2]
+
+[Output1]
+Name='output1'
+Range=[0 1]
+NumMFs=3
+MF1='Agresif':'trapmf',[0 0 0.3 0.4]
+MF2='Normal':'trapmf',[0.3 0.4 0.6 0.7]
+MF3='Mendahului':'trapmf',[0.6 0.7 1 1]
+
+[Rules]
+1 1, 2 (1) : 1
+1 2, 2 (1) : 1
+1 3, 2 (1) : 1
+2 1, 1 (1) : 1
+2 2, 2 (1) : 1
+2 3, 3 (1) : 1
+3 1, 1 (1) : 1
+3 2, 1 (1) : 1
+3 3, 3 (1) : 1
